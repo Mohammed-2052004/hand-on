@@ -1,13 +1,16 @@
-name: CI
-
-on: [push, pull_request]
+name: actions-demo
+on: push
 
 jobs:
-  build:
+  Explore-github-actions:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello, world!
-
+    - name: Print the triggering event
+      run: echo "The job was triggered by ${{ github.event_name }}."
+    - name: Print OS of the runner
+      run: echo "The OS runner is ${{ runner.os }} server."
+    - name: List files in the repository
+      run: ls ${{ github.workspace }}
+    - name: Check out repository code action
+      uses: actions/checkout@v4
